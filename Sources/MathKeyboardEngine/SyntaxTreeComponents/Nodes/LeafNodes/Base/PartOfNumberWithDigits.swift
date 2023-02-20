@@ -1,0 +1,1 @@
+open class PartOfNumberWithDigits : LeafNode {}
