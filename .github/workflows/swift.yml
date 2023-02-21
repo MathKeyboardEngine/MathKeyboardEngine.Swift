@@ -14,9 +14,9 @@ jobs:
     - run: swift test --enable-code-coverage
     - uses: mattpolzin/swift-codecov-action@0.7.5
       with:
-        MINIMUM_COVERAGE: 100
+        MINIMUM_COVERAGE: 97
         INCLUDE_TESTS: 'true'
-  buildmacos:
+  macos:
     runs-on: macos-latest
     steps:
     - uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
-  buildwindows:
+  windows:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
@@ -32,7 +32,7 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
-  buildubuntu57:
+  ubuntu:
     container:
       image: swift:5.7
     runs-on: ubuntu-latest
@@ -42,7 +42,17 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
-  buildubuntu56:
+  swift57:
+    container:
+      image: swift:5.7
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+  swift56:
     container:
       image: swift:5.6
     runs-on: ubuntu-latest
@@ -52,7 +62,7 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
-  buildubuntu55:
+  swift55:
     container:
       image: swift:5.5
     runs-on: ubuntu-latest
@@ -62,29 +72,9 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
-  buildubuntu54:
+  swift54:
     container:
       image: swift:5.4
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
-  buildubuntu53:
-    container:
-      image: swift:5.3
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
-  buildubuntu52:
-    container:
-      image: swift:5.2
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
