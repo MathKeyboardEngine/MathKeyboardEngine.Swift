@@ -10,12 +10,11 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
-        swift: ["5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7", "5"]
+        swift: ["swift:5.0", "swift:5.1", "swift:5.2", "swift:5.3", "swift:5.4", "swift:5.5", "swift:5.6", "swift:5.7"]
     runs-on: ${{ matrix.os }}
+    container:
+      image: ${{ matrix.swift }}
     steps:
-      - uses: fwal/setup-swift@2040b795e5c453c3a05fcb8316496afc8a74f192
-        with:
-          swift-version: ${{ matrix.swift }}
       - uses: actions/checkout@v3
       - name: Build
         run: swift build
