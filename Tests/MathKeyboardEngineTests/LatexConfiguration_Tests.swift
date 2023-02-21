@@ -21,10 +21,10 @@
         let k = KeyboardMemory()
         k.insert(AscendingBranchingNode("", "^{", "}"))
         let myLatexConfiguration = LatexConfiguration()
-        myLatexConfiguration.activePlaceholderShape = #"\blacksquare"#
-        myLatexConfiguration.passivePlaceholderShape = #"\blacksquare"#
 
         // Act
+        myLatexConfiguration.activePlaceholderShape = #"\blacksquare"#
+        myLatexConfiguration.passivePlaceholderShape = #"\blacksquare"#
         myLatexConfiguration.activePlaceholderColor = "orange"
         myLatexConfiguration.passivePlaceholderColor = "gray"
         

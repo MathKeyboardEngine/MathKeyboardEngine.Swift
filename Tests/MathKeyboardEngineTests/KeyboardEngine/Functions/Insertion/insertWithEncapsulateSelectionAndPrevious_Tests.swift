@@ -1,4 +1,4 @@
-﻿class InsertWithEncapsulateSelectionAndPrevious_Tests
+﻿class InsertWithEncapsulateSelectionAndPrevious_Tests : XCTestCase
 {
 
     func test__When_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_TreeNode()
@@ -84,11 +84,10 @@
     }
 
 
-    func test__Throws_on_inserting_BranchingNode_with_single_Placeholder()
+    func test__Does_not_throw_on_inserting_BranchingNode_with_single_Placeholder()
     {
         let k = KeyboardMemory();
-        XCTAssertThrows(message: "Expected 2 Placeholders.", {
-            k.insertWithEncapsulateSelectionAndPrevious(StandardBranchingNode("[", "]"))
-        });
+        k.insertWithEncapsulateSelectionAndPrevious(StandardBranchingNode("[", "]"))
+        Expect.latex("▦", k)
     }
 }
