@@ -24,16 +24,16 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
-  windows:
-    container:
-      image: swift:5.7
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
+windows:
+  runs-on: windows-latest
+  steps:
+    - uses: compnerd/gha-setup-swift@main
+      with:
+        branch: main
+        tag: 5.7
+    - uses: actions/checkout@v2
+    - run: swift build
+    - run: swift test
   ubuntu:
     container:
       image: swift:5.7
