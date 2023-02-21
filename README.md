@@ -1,5 +1,5 @@
 ![](https://badgen.net/badge/test%20coverage/97%25/green)
-![Swift Version](https://img.shields.io/badge/Swift-5.4–5.7-orange.svg)
+![Swift Version](https://img.shields.io/badge/Swift-5.7-orange.svg)
 [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 ![Platforms](https://img.shields.io/badge/Platform-Linux|macOS|Windows-lightblue.svg)
 

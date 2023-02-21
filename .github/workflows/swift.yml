@@ -25,6 +25,8 @@ jobs:
     - name: Run tests
       run: swift test -v
   windows:
+    container:
+      image: swift:5.7
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v3
@@ -52,34 +54,3 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
-  swift56:
-    container:
-      image: swift:5.6
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
-  swift55:
-    container:
-      image: swift:5.5
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
-  swift54:
-    container:
-      image: swift:5.4
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
-
