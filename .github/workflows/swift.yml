@@ -5,22 +5,26 @@ name: Swift
 on: [push]
 
 jobs:
-  build:
-    name: Swift ${{ matrix.swift }} on ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-20.04, macos-11, windows-2019]
-        swift: ["5.0", "5.1", "5.2", "5.3", "5.4", "5.5", "5.6", "5.7"]
-    runs-on: ${{ matrix.os }}
+  buildubuntu57:
+    container:
+      image: swift:5.7
+    runs-on: ubuntu-latest
     steps:
-      - uses: swift-actions/setup-swift@v1.20.0
-        with:
-          swift-version: ${{ matrix.swift }}
-      - uses: actions/checkout@v3
-      - name: Build
-        run: swift build
-      - name: Run tests
-        run: swift test
+    - uses: actions/checkout@v3
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
+  buildmacos57:
+    container:
+      image: swift:5.7
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v
   codecov:
     container:
       image: swift:5.7
