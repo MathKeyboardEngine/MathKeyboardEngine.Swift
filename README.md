@@ -57,7 +57,7 @@ let package = Package(
     ],
     targets: [
         .executableTarget(name: "<my-tool>", dependencies: [
-            .product(name: "MathKeyboardEngine", package: "MathKeyboardEngine.Swift"),
+            .product(name: "MathKeyboardEngine", package: "MathKeyboardEngine"),
         ]),
         // ...
     ]
