@@ -52,7 +52,7 @@ add it to the dependencies for your package and - for example - your command-lin
 let package = Package(
     // ...
     dependencies: [
-        .package(url: "https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift", from: "0.1.0-alpha.1"),
+        .package(url: "https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift", from: "0.1.0-alpha.2"),
     ],
     targets: [
         .executableTarget(name: "<my-tool>", dependencies: [
