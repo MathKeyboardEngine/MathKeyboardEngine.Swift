@@ -75,7 +75,7 @@ Follow these steps to set up (and verify) a development environment for this rep
 1. Install [Git](https://git-scm.com/downloads), [Swift for Windows](https://www.swift.org/download/), [Visual Studio Community Edition with the C++ Desktop Workload](https://visualstudio.microsoft.com/vs/community/), [VS Code](https://code.visualstudio.com/download) and [Swift for VS Code](https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang).
 1. Fork (or clone), checkout and then open the root folder of this repository in VS Code.
 1. In the terminal, run `swift test`.
-1. Checking code coverage and testing for macOS and Linux in done via [GitHub Actions](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/actions)- see [.github/workflows](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/blob/main/.github/workflows/swift.yml).
+1. Checking code coverage and testing for macOS and Linux is done via [GitHub Actions](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/actions) - see [.github/workflows](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/blob/main/.github/workflows/swift.yml).
 
 ## Ask or contribute
 
