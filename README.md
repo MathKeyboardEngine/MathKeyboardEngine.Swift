@@ -6,7 +6,7 @@
 
 ## MathKeyboardEngine for Swift
 
-MathKeyboardEngine for Swift provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library (for example [KaTeX](https://katex.org) or [MathJax](https://www.mathjax.org) in a WebView]).
+MathKeyboardEngine for Swift provides the logic for a highly customizable virtual math keyboard. It is intended for use together with any LaTeX typesetting library (for example [KaTeX](https://katex.org) or [MathJax](https://www.mathjax.org) in a WebView).
 
 Also available:
 
