@@ -1,7 +1,8 @@
-![](https://badgen.net/badge/test%20coverage/97%25/green)
+![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/MathKeyboardEngine/MathKeyboardEngine.Swift?include_prereleases&style=flat-square)
 ![Swift Version](https://img.shields.io/badge/Swift-5.7-orange.svg)
 [![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 ![Platforms](https://img.shields.io/badge/Platform-Linux|macOS|Windows-lightblue.svg)
+![](https://badgen.net/badge/test%20coverage/97%25/green)
 
 ## MathKeyboardEngine for Swift
 
@@ -52,7 +53,7 @@ add it to the dependencies for your package and - for example - your command-lin
 let package = Package(
     // ...
     dependencies: [
-        .package(url: "https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift", from: "0.1.0-alpha.2"),
+        .package(url: "https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift", from: "0.1.0-alpha.3"),
     ],
     targets: [
         .executableTarget(name: "<my-tool>", dependencies: [
