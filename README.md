@@ -50,19 +50,36 @@ To use the `MathKeyboardEngine` library in a [SwiftPM project](https://www.swift
 add it to the dependencies for your package and - for example - your command-line executable target:
 
 ```swift
+// swift-tools-version: 5.7
+
+import PackageDescription
+
 let package = Package(
-    // ...
+    name: "MyExecutable",
     dependencies: [
         .package(url: "https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift", from: "0.1.0-alpha.3"),
     ],
     targets: [
-        .executableTarget(name: "<my-tool>", dependencies: [
-            .product(name: "MathKeyboardEngine", package: "MathKeyboardEngine"),
-        ]),
+        .executableTarget(
+            name: "MyExecutable",
+            dependencies: [                
+                .product(name: "MathKeyboardEngine", package: "MathKeyboardEngine.Swift"), 
+            ]),
         // ...
     ]
 )
 ```
+Then add
+```swift
+import MathKeyboardEngine
+```
+and 
+```swift
+let k = KeyboardMemory()
+let latexConfiguration = LatexConfiguration()
+// Subscribe to onclick events of virtual key presses, etc.
+```
+
 For more information, see [swift.org/package-manager](https://www.swift.org/package-manager).
 
 ## Documentation
