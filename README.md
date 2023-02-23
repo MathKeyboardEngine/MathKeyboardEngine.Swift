@@ -1,6 +1,5 @@
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/MathKeyboardEngine/MathKeyboardEngine.Swift?include_prereleases&style=flat-square)
 ![Swift Version](https://img.shields.io/badge/Swift-5.7-orange.svg)
-[![SwiftPM compatible](https://img.shields.io/badge/SwiftPM-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 ![Platforms](https://img.shields.io/badge/Platform-Linux|macOS|Windows-lightblue.svg)
 ![](https://badgen.net/badge/test%20coverage/97%25/green)
 
@@ -45,6 +44,7 @@ Live (JavaScript) examples can be tested at [mathkeyboardengine.github.io](https
 - this library also supports handling input from a physical keyboard, where - for example - the forward slash "/" key can be programmed to result in encapsulating a previously typed number as the numerator of a fraction. (See the examples.)
 - almost forgotten: it's open source, free to use, free to modify (please fork this repo)!
 
+
 ## How to use this library
 
 To use the `MathKeyboardEngine` library in a [SwiftPM project](https://www.swift.org/package-manager), 
@@ -87,6 +87,7 @@ Visit the [documentation](https://mathkeyboardengine.github.io/docs/swift/latest
 
 \* If you use a version tag in the url like this: https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/0.1.0-alpha.2, you can see the git repository as it was for that version. That may not be needed if the [changelog](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/main/CHANGELOG.md) doesn't note any important changes.
 
+
 ## How to use this repo
 
 Follow these steps to set up (and verify) a development environment for this repository on Windows:
@@ -95,6 +96,23 @@ Follow these steps to set up (and verify) a development environment for this rep
 1. Fork (or clone), checkout and then open the root folder of this repository in VS Code.
 1. In the terminal, run `swift test`.
 1. Checking code coverage and testing for macOS and Linux is done via [GitHub Actions](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/actions) - see [.github/workflows](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/blob/main/.github/workflows/swift.yml).
+
+
+## License
+
+The MathKeyboardEngine repositories use the most permissive licensing available. The "BSD Zero Clause License" ([0BSD](https://choosealicense.com/licenses/0bsd/)) allows for<br/>
+commercial + non-commercial use, closed + open source, with + without modifications, etc. and [is equivalent](https://github.com/github/choosealicense.com/issues/805) to licenses like:
+
+- "MIT No Attribution License" ([MIT-0](https://choosealicense.com/licenses/mit-0//)).
+- "The Unlicense" ([Unlicense](https://choosealicense.com/licenses/unlicense/)).
+- "CC0" ([CC0](https://choosealicense.com/licenses/cc0/)).
+
+The "BSD Zero Clause License" ([0BSD](https://choosealicense.com/licenses/0bsd/)) does not have the condition
+
+> (...), provided that the above copyright notice and this permission notice appear in all copies.
+
+which is part of the "MIT License" ([MIT](https://choosealicense.com/licenses/mit/)) and its shorter equivalent "ISC License" ([ISC](https://choosealicense.com/licenses/isc/)). Apart from that they are all equivalent.
+
 
 ## Ask or contribute
 
