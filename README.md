@@ -13,6 +13,7 @@ Also available:
 - [MathKeyboardEngine for C#](https://github.com/MathKeyboardEngine/MathKeyboardEngine.CSharp#readme).
 - [MathKeyboardEngine for JavaScript](https://github.com/MathKeyboardEngine/MathKeyboardEngine#readme).
 - [MathKeyboardEngine for Python](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Python#readme).
+- [MathKeyboardEngine for other languages](https://github.com/MathKeyboardEngine).
 
 #### An execution timeline
 
