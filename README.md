@@ -80,11 +80,11 @@ let latexConfiguration = LatexConfiguration()
 // Subscribe to onclick events of virtual key presses, etc.
 ```
 
-For more information, see [swift.org/package-manager](https://www.swift.org/package-manager).
-
 ## Documentation
 
-Visit the [documentation](https://mathkeyboardengine.github.io/docs/swift/latest/).
+Visit the [documentation](https://mathkeyboardengine.github.io/docs/swift/latest/) and the (latest version of the)* [examples folder](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/main/examples) for more implementation details.
+
+\* If you use a version tag in the url like this: https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/0.1.0-alpha.2, you can see the git repository as it was for that version. That may not be needed if the [changelog](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/main/CHANGELOG.md) doesn't note any important changes.
 
 ## How to use this repo
 
