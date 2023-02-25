@@ -1,7 +1,11 @@
 internal extension KeyboardMemory {
   func popSelection() -> ReferenceArray<TreeNode> {
     guard let diff = self.selectionDiff else {
-      return ReferenceArray<TreeNode>()
+      if MathKeyboardEngineError.shouldBeFatal {
+        MathKeyboardEngineError.triggerFatalError("Enter selection mode before calling this method.", #file, #line)
+      } else {
+        return ReferenceArray<TreeNode>()
+      }
     }
     if diff == 0 {
       self.leaveSelectionMode()

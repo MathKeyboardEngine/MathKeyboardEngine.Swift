@@ -1,7 +1,11 @@
 public extension KeyboardMemory {
   func insertWithEncapsulateSelectionAndPrevious(_ newNode: BranchingNode) -> Void {
     if newNode.placeholders.count < 2 {
-      return
+      if MathKeyboardEngineError.shouldBeFatal {
+        MathKeyboardEngineError.triggerFatalError("Expected 2 placeholders.", #file, #line)
+      } else {
+        return
+      }
     }
     let selection: ReferenceArray<TreeNode> = self.popSelection()
     let secondPlaceholder: Placeholder = newNode.placeholders[1]

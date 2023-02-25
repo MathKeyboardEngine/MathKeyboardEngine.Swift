@@ -171,10 +171,18 @@
     }
 
 
-    func test__GetMoveDownSuggestion_does_not_throw_if_it_is_called_for_a_Placeholder_that_is_not_part_of_the_MatrixNode()
+    func test__GetMoveDownSuggestion_errors_if_it_is_called_for_a_Placeholder_that_is_not_part_of_the_MatrixNode()
     {
-        let matrix = MatrixNode(matrixType: "pmatrix", width: 2, height: 2)
-        let placeholderThatIsNotPartOfTheMatrix = Placeholder()
-        _ = matrix.getMoveDownSuggestion(placeholderThatIsNotPartOfTheMatrix)
+        for shouldBeFatal in [true, false] {
+            MathKeyboardEngineError.shouldBeFatal = shouldBeFatal
+            let matrix = MatrixNode(matrixType: "pmatrix", width: 2, height: 2)
+            let placeholderThatIsNotPartOfTheMatrix = Placeholder()
+            let act = { return matrix.getMoveDownSuggestion(placeholderThatIsNotPartOfTheMatrix) } 
+            if shouldBeFatal {
+                expectFatalError("The provided Placeholder is not part of this MatrixNode.", { _ = act() })
+            } else {
+                XCTAssertNil(act())
+            }
+        }
     }
 }

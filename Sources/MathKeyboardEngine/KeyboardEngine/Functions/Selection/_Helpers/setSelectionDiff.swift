@@ -16,7 +16,11 @@ internal extension KeyboardMemory {
       } else {
         let indexOfNewInclusiveSelectionLeftBorder = indexOfCurrent + diffWithCurrent + 1
         if indexOfNewInclusiveSelectionLeftBorder < 0 {
-          return
+          if MathKeyboardEngineError.shouldBeFatal {
+            MathKeyboardEngineError.triggerFatalError("The TreeNode at index 0 of the current Placeholder is as far as you can go left if current is a TreeNode.", #file, #line)
+          } else {
+            return
+          }
         }
         self.inclusiveSelectionLeftBorder = nodes[indexOfNewInclusiveSelectionLeftBorder]
         self.inclusiveSelectionRightBorder = (self.current as! TreeNode)

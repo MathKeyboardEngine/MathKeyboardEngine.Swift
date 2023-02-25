@@ -28,35 +28,26 @@ open class MatrixNode : BranchingNode {
   }
 
   open override func getMoveDownSuggestion(_ fromPlaceholder: Placeholder) -> Placeholder? {
-    do {
-      let (rowIndex, columnIndex ) = try self.getPositionOf(fromPlaceholder)
-      if (rowIndex + 1 < self.grid.count) {
-        return self.grid[rowIndex + 1][columnIndex]
-      } else {
-        return nil
-      }
-    } catch {
+    guard let (rowIndex, columnIndex ) = self.getPositionOf(fromPlaceholder), rowIndex + 1 < self.grid.count else {
       return nil
     }
+    return self.grid[rowIndex + 1][columnIndex]
   }
 
   open override func getMoveUpSuggestion(_ fromPlaceholder: Placeholder) -> Placeholder? {
-    do {
-      let ( rowIndex, columnIndex ) = try self.getPositionOf(fromPlaceholder)
-      if (rowIndex - 1 >= 0) {
-        return self.grid[rowIndex - 1][columnIndex]
-      } else {
+      guard let ( rowIndex, columnIndex ) = getPositionOf(fromPlaceholder), rowIndex - 1 >= 0 else {
         return nil
       }
-    }
-    catch {
-      return nil
-    }
+      return self.grid[rowIndex - 1][columnIndex]
   }
 
-  private func getPositionOf(_ placeholder: Placeholder) throws -> (Int,Int) {    
+  private func getPositionOf(_ placeholder: Placeholder) -> (Int,Int)? {    
     guard let index = self.placeholders.indexOf(placeholder) else {
-      throw MathKeyboardEngineError("The provided Placeholder is not part of this MatrixNode.")
+      if MathKeyboardEngineError.shouldBeFatal {
+        MathKeyboardEngineError.triggerFatalError("The provided Placeholder is not part of this MatrixNode.", #file, #line)
+      } else{
+        return nil
+      }
     }
     let rowIndex = index / self.width
     let columnIndex = index - rowIndex * self.width

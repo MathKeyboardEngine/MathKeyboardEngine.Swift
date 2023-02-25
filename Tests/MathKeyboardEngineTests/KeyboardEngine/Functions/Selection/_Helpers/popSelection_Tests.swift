@@ -2,9 +2,17 @@
 
 class PopSelection_Tests : XCTestCase
 {
-    func test__Does_not_throw_if_not_InSelectionMode() {
-        let k = KeyboardMemory()
-        _ = k.popSelection()
+    func test__Error_if_not_InSelectionMode() {
+        for shouldBeFatal in [true, false] {
+            MathKeyboardEngineError.shouldBeFatal = shouldBeFatal
+            let k = KeyboardMemory()
+            let act = {  _ = k.popSelection() }
+            if shouldBeFatal {
+                expectFatalError("Enter selection mode before calling this method.", act)
+            } else {
+                act()
+            }
+        }
     }
 
 

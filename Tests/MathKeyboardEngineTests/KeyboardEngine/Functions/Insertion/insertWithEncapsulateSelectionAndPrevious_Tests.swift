@@ -84,10 +84,18 @@
     }
 
 
-    func test__Does_not_throw_on_inserting_BranchingNode_with_single_Placeholder()
+    func test__Error_on_inserting_BranchingNode_with_single_Placeholder()
     {
-        let k = KeyboardMemory()
-        k.insertWithEncapsulateSelectionAndPrevious(StandardBranchingNode("[", "]"))
-        Expect.latex("▦", k)
+        for shouldBeFatal in [true, false] {
+            MathKeyboardEngineError.shouldBeFatal = shouldBeFatal
+            let k = KeyboardMemory()
+            let act =  { k.insertWithEncapsulateSelectionAndPrevious(StandardBranchingNode("[", "]")) }
+            if shouldBeFatal {
+                expectFatalError("Expected 2 placeholders.", act);
+            } else {
+                act()
+                Expect.latex("▦", k)
+            }
+        }
     }
 }
