@@ -1,8 +1,7 @@
 internal extension ReferenceArray<Placeholder> {
   func getFirstNonEmptyOnLeftOf(_ element: Placeholder) -> Placeholder? {
     var isOnTheLeft = false
-    for i in (0..<self.count).reversed() {
-      let placeholder: Placeholder = self[i]
+    for placeholder in self.asValueTypeArray.reversed() {
       if !isOnTheLeft {
         if placeholder === element {
           isOnTheLeft = true

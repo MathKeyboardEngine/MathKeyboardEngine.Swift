@@ -1,6 +1,8 @@
 public class ReferenceArray<T : AnyObject> {
     public var asValueTypeArray = [T]()
+    
     public init() { }
+
     private init(_ arr : ArraySlice<T>) {
         asValueTypeArray.append(contentsOf: arr)
     }
@@ -46,20 +48,19 @@ public class ReferenceArray<T : AnyObject> {
     }
 
     func firstAfterOrNil(_ element: T) -> T? {
-        let i = self.indexOf(element)
-        if i != nil && i! < self.count - 1 {
-            return self[i! + 1];
+        if let i = self.indexOf(element), i < self.count - 1 {
+            return self[i + 1]
         } else {
-            return nil;
+            return nil
         }
     }
 
     func firstBeforeOrNil(_ element: T) -> T? {
-        let i = self.indexOf(element)
-        if i != nil && i! > 0 {
-            return self[i! - 1];
+        
+        if let i = self.indexOf(element), i > 0 {
+            return self[i - 1]
         } else {
-            return nil;
+            return nil
         }
     }
 
@@ -78,7 +79,7 @@ public class ReferenceArray<T : AnyObject> {
     }
 
     func replaceSubrange(_ subrange: ClosedRange<Int>, with newElements: ReferenceArray<T>) {
-        self.asValueTypeArray.replaceSubrange(subrange, with: newElements.asValueTypeArray);
+        self.asValueTypeArray.replaceSubrange(subrange, with: newElements.asValueTypeArray)
     }
 
     func removeLast() {

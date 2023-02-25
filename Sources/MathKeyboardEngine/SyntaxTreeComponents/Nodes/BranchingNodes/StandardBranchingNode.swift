@@ -16,10 +16,10 @@ open class StandardBranchingNode : BranchingNode {
   }
 
   open override func getLatexPart(_ k: KeyboardMemory, _ latexConfiguration: LatexConfiguration) -> String {
-    var latex = self.before + self.placeholders[0].getLatex(k, latexConfiguration) + self.then;
+    var latex = self.before + self.placeholders[0].getLatex(k, latexConfiguration) + self.then
     for i in 0..<self.rest.count {
-      latex += self.placeholders[i + 1].getLatex(k, latexConfiguration) + self.rest[i];
+      latex += self.placeholders[i + 1].getLatex(k, latexConfiguration) + self.rest[i]
     }
-    return latex;
+    return latex
   }
 }

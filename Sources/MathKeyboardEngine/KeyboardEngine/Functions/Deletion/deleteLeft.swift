@@ -1,57 +1,54 @@
 public extension KeyboardMemory {
   func deleteLeft() -> Void {
     if let current: Placeholder = self.current as? Placeholder {
-      if current.parentNode == nil || !current.nodes.isEmpty {
-        return
-      } else {
-        let nonEmptyPlaceholderOnLeft = current.parentNode!.placeholders.getFirstNonEmptyOnLeftOf(current)
-        if nonEmptyPlaceholderOnLeft != nil {
-          if current.parentNode!.placeholders.count == 2 && current === current.parentNode!.placeholders[1] && current.nodes.count == 0 {
-            deleteOuterBranchingNodeButNotItsContents(nonEmptyPlaceholderOnLeft!);
-            self.current = nonEmptyPlaceholderOnLeft!.nodes.last!
-          } else {
-            nonEmptyPlaceholderOnLeft!.nodes.removeLast()
-            self.current = nonEmptyPlaceholderOnLeft!.nodes.last ?? nonEmptyPlaceholderOnLeft!
-          }
-        } else if current.parentNode!.placeholders.asValueTypeArray.allSatisfy({ $0.nodes.isEmpty }) {
-          let ancestorPlaceholder = current.parentNode!.parentPlaceholder!
-          let previousNode = ancestorPlaceholder.nodes.firstBeforeOrNil(current.parentNode!)
-          ancestorPlaceholder.nodes.remove(current.parentNode!)
-          self.current = previousNode ?? ancestorPlaceholder
-        } else if current.parentNode!.placeholders[0] === current && current.nodes.isEmpty && current.parentNode!.placeholders.contains(where: { !$0.nodes.isEmpty }) {
-          let previousNode = current.parentNode!.parentPlaceholder.nodes.firstBeforeOrNil(current.parentNode!)
-          if (previousNode != nil) {
-            encapsulatePreviousInto(previousNode!, current)
-            self.current = current.nodes.last!
-          } else {
-            let nonEmptySiblingPlaceholders = current.parentNode!.placeholders.asValueTypeArray.filter{ !$0.nodes.isEmpty }
-            if (nonEmptySiblingPlaceholders.count == 1) {
-              let nodes = nonEmptySiblingPlaceholders[0].nodes;
-              let ancestorPlaceholder : Placeholder = (self.current as! Placeholder).parentNode!.parentPlaceholder!
-              let indexOfParentNode : Int = ancestorPlaceholder.nodes.indexOf(current.parentNode!)!
-              for node in nodes.asValueTypeArray {
-                node.parentPlaceholder = ancestorPlaceholder
-              }
-              ancestorPlaceholder.nodes.replaceSubrange(indexOfParentNode...indexOfParentNode, with: nodes)
-              self.current = nodes.last!
+      guard current.nodes.isEmpty, let currentParentNode : BranchingNode = current.parentNode else {
+      return
+      }
+      if let nonEmptyPlaceholderOnLeft = currentParentNode.placeholders.getFirstNonEmptyOnLeftOf(current) {
+        if currentParentNode.placeholders.count == 2 && current === currentParentNode.placeholders[1] && current.nodes.count == 0 {
+          deleteOuterBranchingNodeButNotItsContents(nonEmptyPlaceholderOnLeft)
+          self.current = nonEmptyPlaceholderOnLeft.nodes.last!
+        } else {
+          nonEmptyPlaceholderOnLeft.nodes.removeLast()
+          self.current = nonEmptyPlaceholderOnLeft.nodes.last ?? nonEmptyPlaceholderOnLeft
+        }
+      } else if currentParentNode.placeholders.asValueTypeArray.allSatisfy({ $0.nodes.isEmpty }) {
+        let ancestorPlaceholder = currentParentNode.parentPlaceholder!
+        let previousNode = ancestorPlaceholder.nodes.firstBeforeOrNil(currentParentNode)
+        ancestorPlaceholder.nodes.remove(currentParentNode)
+        self.current = previousNode ?? ancestorPlaceholder
+      } else if currentParentNode.placeholders[0] === current && current.nodes.isEmpty && currentParentNode.placeholders.contains(where: { $0.nodes.count > 0 }) {
+        if let previousNode = currentParentNode.parentPlaceholder.nodes.firstBeforeOrNil(currentParentNode) {
+          encapsulatePreviousInto(previousNode, current)
+          self.current = current.nodes.last!
+        } else {
+          let nonEmptySiblingPlaceholders = currentParentNode.placeholders.asValueTypeArray.filter{ $0.nodes.count > 0 }
+          if (nonEmptySiblingPlaceholders.count == 1) {
+            let nodes = nonEmptySiblingPlaceholders[0].nodes
+            let ancestorPlaceholder : Placeholder = currentParentNode.parentPlaceholder!
+            let indexOfParentNode : Int = ancestorPlaceholder.nodes.indexOf(currentParentNode)!
+            for node in nodes.asValueTypeArray {
+              node.parentPlaceholder = ancestorPlaceholder
             }
+            ancestorPlaceholder.nodes.replaceSubrange(indexOfParentNode...indexOfParentNode, with: nodes)
+            self.current = nodes.last!
           }
         }
       }
+      
     } else {
-      let current = self.current as! TreeNode
-      let currentBranchingNode = self.current as? BranchingNode
-      if current is BranchingNode && currentBranchingNode!.placeholders[0].nodes.count > 0 && currentBranchingNode!.placeholders.asValueTypeArray[1..<currentBranchingNode!.placeholders.count].allSatisfy({ $0.nodes.isEmpty }) {
-        let nonEmptyPlaceholder = (self.current as! BranchingNode).placeholders[0]
-        deleteOuterBranchingNodeButNotItsContents(nonEmptyPlaceholder);
+      if let current = self.current as? BranchingNode, current.placeholders[0].nodes.count > 0 && current.placeholders.asValueTypeArray[1..<current.placeholders.count].allSatisfy({ $0.nodes.isEmpty }) {
+        let nonEmptyPlaceholder = current.placeholders[0]
+        deleteOuterBranchingNodeButNotItsContents(nonEmptyPlaceholder)
         self.current = nonEmptyPlaceholder.nodes.last!
-      } else if current is BranchingNode && (current as! BranchingNode).placeholders.contains(where: { $0.nodes.count > 0 }) {
-        self.current = (current as! BranchingNode).placeholders.asValueTypeArray.flatMap{ $0.nodes.asValueTypeArray }.last!
+      } else if let current = self.current as? BranchingNode, current.placeholders.contains(where: { $0.nodes.count > 0 }) {
+        self.current = current.placeholders.asValueTypeArray.flatMap{ $0.nodes.asValueTypeArray }.last!
         self.deleteLeft()
       } else {
+        let current = self.current as! TreeNode
         let previousNode: TreeNode? = current.parentPlaceholder.nodes.firstBeforeOrNil(current)
         current.parentPlaceholder.nodes.remove(current)
-        self.current = previousNode ?? current.parentPlaceholder;
+        self.current = previousNode ?? current.parentPlaceholder
       }
     }
   }

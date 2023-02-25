@@ -9,21 +9,21 @@ open class LatexConfiguration {
   public init() { }
 
   open var activePlaceholderLatex : String {
-    get{
-      if (activePlaceholderColor == nil) {
-        return activePlaceholderShape
+    get {
+      if let color = activePlaceholderColor {
+        return #"{\color{\#(color)}\#(activePlaceholderShape)}"#
       } else {
-        return #"{\color{\#(self.activePlaceholderColor!)}\#(self.activePlaceholderShape)}"#
+        return activePlaceholderShape
       }
     }
   }
 
   open var passivePlaceholderLatex: String {
     get{
-      if (passivePlaceholderColor == nil) {
-        return passivePlaceholderShape
+      if let color = passivePlaceholderColor {
+        return #"{\color{\#(color)}\#(passivePlaceholderShape)}"#
       } else {
-        return #"{\color{\#(self.passivePlaceholderColor!)}\#(self.passivePlaceholderShape)}"#
+        return passivePlaceholderShape
       }
     }
   }

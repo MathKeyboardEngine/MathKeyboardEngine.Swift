@@ -1,12 +1,11 @@
 internal func concatLatex(_ latexArray: [String])-> String {
   var s: String = ""
-  for i: Int in 0..<latexArray.count {
-    let latexToAdd: String = latexArray[i]
+  for latexToAdd in latexArray {
     if endsWithLatexCommand(s) && latexToAdd[0].isLetter {
       s += " "
     }
-    s += latexToAdd;
+    s += latexToAdd
   }
-  return s;
+  return s
 }
 

@@ -1,16 +1,13 @@
 public extension KeyboardMemory {
   func moveUp() -> Void {
-    var fromPlaceholder = (self.current is Placeholder ? self.current : (self.current as! TreeNode).parentPlaceholder) as! Placeholder
-    var suggestingNode: BranchingNode
-    while (true) {
-      if (fromPlaceholder.parentNode == nil) {
-        return;
+    var fromPlaceholder = (self.current as? Placeholder) ?? (self.current as! TreeNode).parentPlaceholder!
+    while true {
+      guard let suggestingNode = fromPlaceholder.parentNode else {
+        return
       }
-      suggestingNode = fromPlaceholder.parentNode!
-      let suggestion = suggestingNode.getMoveUpSuggestion(fromPlaceholder)
-      if (suggestion != nil) {
-        self.current = suggestion!.nodes.last ?? suggestion!
-        return;
+      if let suggestion = suggestingNode.getMoveUpSuggestion(fromPlaceholder) {
+        self.current = suggestion.nodes.last ?? suggestion
+        return
       }
       fromPlaceholder = suggestingNode.parentPlaceholder
     }

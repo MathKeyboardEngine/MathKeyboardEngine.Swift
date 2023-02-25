@@ -1,7 +1,7 @@
 internal extension ReferenceArray<TreeNode> {
   func encapsulate(_ encapsulatingPlaceholder: Placeholder) -> Void {
     for node in self.asValueTypeArray {
-      node.parentPlaceholder = encapsulatingPlaceholder;
+      node.parentPlaceholder = encapsulatingPlaceholder
       encapsulatingPlaceholder.nodes.append(node)
     }
   }

@@ -6,13 +6,13 @@ public extension KeyboardMemory {
       let currentIndex = siblingNodes.indexOf(current)!
       siblingNodes[currentIndex] = newNode
       newNode.parentPlaceholder = current.parentPlaceholder
-      if current is RoundBracketsNode && deleteOuterRoundBracketsIfAny {
-        (current as! RoundBracketsNode).placeholders[0].nodes.encapsulate(encapsulatingPlaceholder)
+      if let current = current as? RoundBracketsNode, deleteOuterRoundBracketsIfAny {
+        current.placeholders[0].nodes.encapsulate(encapsulatingPlaceholder)
         self.current = newNode.placeholders.firstAfterOrNil(encapsulatingPlaceholder) ?? newNode
       } else if current is PartOfNumberWithDigits {
         encapsulatingPlaceholder.nodes.append(current)
         current.parentPlaceholder = encapsulatingPlaceholder
-        encapsulateAllPartsOfNumberWithDigitsLeftOfIndex(currentIndex, siblingNodes, encapsulatingPlaceholder);
+        encapsulateAllPartsOfNumberWithDigitsLeftOfIndex(currentIndex, siblingNodes, encapsulatingPlaceholder)
         self.moveRight()
       } else {
         encapsulatingPlaceholder.nodes.append(current)

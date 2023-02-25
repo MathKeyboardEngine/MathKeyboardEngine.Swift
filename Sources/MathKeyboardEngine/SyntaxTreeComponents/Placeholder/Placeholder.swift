@@ -1,29 +1,21 @@
 open class Placeholder : SyntaxTreeComponent {
+  public init() {}
   public var parentNode: BranchingNode? = nil
-  public var nodes: ReferenceArray<TreeNode> = ReferenceArray<TreeNode>()
+  public var nodes = ReferenceArray<TreeNode>()
 
-  open override func getLatex(_ k: KeyboardMemory, _ latexConfiguration: LatexConfiguration) -> String {
-        if (self === k.inclusiveSelectionLeftBorder)
-        {
+  open func getLatex(_ k: KeyboardMemory, _ latexConfiguration: LatexConfiguration) -> String {
+        if self === k.inclusiveSelectionLeftBorder {
             return concatLatex([latexConfiguration.selectionHightlightStart] + nodes.asValueTypeArray.map( { $0.getLatex(k, latexConfiguration) }))
         }
-        else if (self === k.current)
-        {
-            if (nodes.count == 0)
-            {
+        else if self === k.current {
+            if nodes.isEmpty {
                 return latexConfiguration.activePlaceholderLatex
-            }
-            else
-            {
+            } else {
                 return concatLatex([latexConfiguration.activePlaceholderLatex] + nodes.asValueTypeArray.map( { $0.getLatex(k, latexConfiguration) }))
             }
-        }
-        else if (nodes.count == 0)
-        {
+        } else if nodes.isEmpty {
             return latexConfiguration.passivePlaceholderLatex
-        }
-        else
-        {
+        } else {
             return concatLatex(nodes.asValueTypeArray.map({ $0.getLatex(k, latexConfiguration) }))
         }
     }

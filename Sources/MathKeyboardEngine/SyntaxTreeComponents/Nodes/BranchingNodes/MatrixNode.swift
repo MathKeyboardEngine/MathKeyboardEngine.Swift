@@ -12,7 +12,7 @@ open class MatrixNode : BranchingNode {
         row.append(placeholder)
         leftToRight.append(placeholder)
       }
-      grid.append(row);
+      grid.append(row)
     }
     self.grid = grid
     self.matrixType = matrixType
@@ -21,19 +21,19 @@ open class MatrixNode : BranchingNode {
   }
 
   open override func getLatexPart(_ k: KeyboardMemory, _ latexConfiguration: LatexConfiguration) -> String {
-    var latex = #"\begin{\#(self.matrixType)}"#;
-    latex += self.grid.asValueTypeArray.map{ $0.asValueTypeArray.map{ $0.getLatex(k, latexConfiguration)}.joined(separator:" & ")}.joined(separator: #" \\ "#);
-    latex += #"\end{\#(self.matrixType)}"#;
-    return latex;
+    var latex = #"\begin{\#(self.matrixType)}"#
+    latex += self.grid.asValueTypeArray.map{ $0.asValueTypeArray.map{ $0.getLatex(k, latexConfiguration)}.joined(separator:" & ")}.joined(separator: #" \\ "#)
+    latex += #"\end{\#(self.matrixType)}"#
+    return latex
   }
 
   open override func getMoveDownSuggestion(_ fromPlaceholder: Placeholder) -> Placeholder? {
     do {
-      let (rowIndex, columnIndex ) = try self.getPositionOf(fromPlaceholder);
+      let (rowIndex, columnIndex ) = try self.getPositionOf(fromPlaceholder)
       if (rowIndex + 1 < self.grid.count) {
-        return self.grid[rowIndex + 1][columnIndex];
+        return self.grid[rowIndex + 1][columnIndex]
       } else {
-        return nil;
+        return nil
       }
     } catch {
       return nil
@@ -44,24 +44,22 @@ open class MatrixNode : BranchingNode {
     do {
       let ( rowIndex, columnIndex ) = try self.getPositionOf(fromPlaceholder)
       if (rowIndex - 1 >= 0) {
-        return self.grid[rowIndex - 1][columnIndex];
+        return self.grid[rowIndex - 1][columnIndex]
       } else {
-        return nil;
+        return nil
       }
     }
     catch {
       return nil
     }
-
   }
 
-  private func getPositionOf(_ placeholder: Placeholder) throws -> (Int,Int) {
-    let index = self.placeholders.indexOf(placeholder)
-    if (index == nil) {
+  private func getPositionOf(_ placeholder: Placeholder) throws -> (Int,Int) {    
+    guard let index = self.placeholders.indexOf(placeholder) else {
       throw MathKeyboardEngineError("The provided Placeholder is not part of this MatrixNode.")
     }
-    let rowIndex = index! / self.width
-    let columnIndex = index! - rowIndex * self.width
+    let rowIndex = index / self.width
+    let columnIndex = index - rowIndex * self.width
     return (rowIndex, columnIndex)
   }
 }

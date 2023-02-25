@@ -1,16 +1,15 @@
 public extension KeyboardMemory {
   func moveLeft() -> Void {
     if let current = self.current as? Placeholder {
-      if current.parentNode == nil {
-        return;
+      guard let parentNode = current.parentNode else {
+        return
       }
 
-      let previousPlaceholder = current.parentNode!.placeholders.firstBeforeOrNil(current)
-      if previousPlaceholder != nil {
-        self.current = previousPlaceholder!.nodes.last ?? previousPlaceholder!
+      if let previousPlaceholder = parentNode.placeholders.firstBeforeOrNil(current) {
+        self.current = previousPlaceholder.nodes.last ?? previousPlaceholder
       } else {
-        let ancestorPlaceholder = current.parentNode!.parentPlaceholder!
-        let nodePreviousToParentOfCurrent = ancestorPlaceholder.nodes.firstBeforeOrNil(current.parentNode!)
+        let ancestorPlaceholder = parentNode.parentPlaceholder!
+        let nodePreviousToParentOfCurrent = ancestorPlaceholder.nodes.firstBeforeOrNil(parentNode)
         self.current = nodePreviousToParentOfCurrent ?? ancestorPlaceholder
       }
     } else {
