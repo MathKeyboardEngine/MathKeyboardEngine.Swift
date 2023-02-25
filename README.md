@@ -1,6 +1,6 @@
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/MathKeyboardEngine/MathKeyboardEngine.Swift?include_prereleases&style=flat-square)
-![Swift Version](https://img.shields.io/badge/Swift-5.7-orange.svg)
-![Platforms](https://img.shields.io/badge/Platform-Linux|macOS|Windows-lightblue.svg)
+![Swift Version](https://img.shields.io/badge/Swift-5.7-black.svg)
+![Platforms](https://img.shields.io/badge/Platform-Linux|macOS|Windows-black.svg)
 ![](https://badgen.net/badge/test%20coverage/97%25/green)
 
 ## MathKeyboardEngine for Swift
@@ -83,7 +83,7 @@ let latexConfiguration = LatexConfiguration()
 
 ## Documentation
 
-Visit the [documentation](https://mathkeyboardengine.github.io/docs/swift/latest/) and the (latest version of the)* [examples folder](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/main/examples) for more implementation details.
+Visit the [documentation](https://mathkeyboardengine.github.io/docs/swift/latest/) and the (latest version of the)* [Examples folder](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/main/Examples) for more implementation details.
 
 \* If you use a version tag in the url like this: https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/0.1.0-alpha.2, you can see the git repository as it was for that version. That may not be needed if the [changelog](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/tree/main/CHANGELOG.md) doesn't note any important changes.
 
