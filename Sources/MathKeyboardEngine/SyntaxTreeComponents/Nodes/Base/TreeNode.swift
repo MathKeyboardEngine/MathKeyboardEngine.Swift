@@ -1,7 +1,13 @@
 open class TreeNode : SyntaxTreeComponent {
+  public init() { }
   public var parentPlaceholder: Placeholder!
-  open func getLatexPart(_ k: KeyboardMemory, _ latexConfiguration: LatexConfiguration) -> String { 
-    return "error"
+  open func getLatexPart(_ k: KeyboardMemory, _ latexConfiguration: LatexConfiguration) -> String {
+    let errorMessage = " NotImplemented: 'getLatexPart'. "
+    if MathKeyboardEngineError.shouldBeFatal {
+      MathKeyboardEngineError.triggerFatalError(errorMessage, #file, #line)
+    } else {
+      return errorMessage
+    }
   }
   open func getLatex(_ k: KeyboardMemory, _ latexConfiguration: LatexConfiguration) -> String {
     var latex = self.getLatexPart(k, latexConfiguration)

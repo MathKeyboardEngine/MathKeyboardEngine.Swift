@@ -1,13 +1,10 @@
-﻿class GetLatex_Tests : XCTestCase 
-{
-    private var Config : LatexConfiguration {
-        get {
-            let config = LatexConfiguration()
-            config.activePlaceholderShape = "▦"
-            config.passivePlaceholderShape = "⬚"
-            return config
-        }
-    }
+﻿class GetLatex_Tests : XCTestCase {
+    let Config : LatexConfiguration = {
+        let config = LatexConfiguration()
+        config.activePlaceholderShape = "▦"
+        config.passivePlaceholderShape = "⬚"
+        return config
+    }()
 
     func test__Can_get_the_LaTeX_for_a_BranchingNode()
     {
@@ -20,7 +17,7 @@
         XCTAssertEqual(#"\frac{⬚}{⬚}"#, DescendingBranchingNode(#"\frac{"#, "}{", "}").getViewModeLatex(Config))
     }
 
-    func Can_get_the_LaTeX_for_a_LeafNode()
+    func test__Can_get_the_LaTeX_for_a_LeafNode()
     {
         // Arrange
         let k = KeyboardMemory()
@@ -31,7 +28,7 @@
         XCTAssertEqual("3", DigitNode("3").getViewModeLatex(Config))
     }
 
-    func Can_get_the_LaTeX_for_a_Placeholder()
+    func test__Can_get_the_LaTeX_for_a_Placeholder()
     {
         // Arrange
         let k = KeyboardMemory()
