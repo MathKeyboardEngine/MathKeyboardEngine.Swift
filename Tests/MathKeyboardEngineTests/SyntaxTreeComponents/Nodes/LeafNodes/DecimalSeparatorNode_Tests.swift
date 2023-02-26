@@ -14,4 +14,18 @@
         // Assert
         Expect.latex("1.2▦", k)
     }
+
+    func test__Default_is_decimal_point()
+    {
+        let k = KeyboardMemory()
+        k.insert(DecimalSeparatorNode())
+        Expect.latex(".▦", k)
+    }
+
+    func test__Easy_override_at_init()
+    {
+        let k = KeyboardMemory()
+        k.insert(DecimalSeparatorNode("{,}"))
+        Expect.latex("{,}▦", k)
+    }
 }
