@@ -7,9 +7,8 @@ internal func endsWithLatexCommand(_ latex: String) -> Bool {
     for c: Character in latex.reversed() {
       if c.isLetter {
         continue
-      } else {
-        return c == "\\"
       }
+      return c == "\\"
     }
   }
   return false

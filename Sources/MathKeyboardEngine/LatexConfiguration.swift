@@ -12,9 +12,8 @@ open class LatexConfiguration {
     get {
       if let color = activePlaceholderColor {
         return #"{\color{\#(color)}\#(activePlaceholderShape)}"#
-      } else {
-        return activePlaceholderShape
       }
+      return activePlaceholderShape
     }
   }
 
@@ -22,9 +21,8 @@ open class LatexConfiguration {
     get{
       if let color = passivePlaceholderColor {
         return #"{\color{\#(color)}\#(passivePlaceholderShape)}"#
-      } else {
-        return passivePlaceholderShape
       }
+      return passivePlaceholderShape
     }
   }
 }

@@ -5,9 +5,8 @@ open class TreeNode : SyntaxTreeComponent {
     let errorMessage = " NotImplemented: 'getLatexPart'. "
     if MathKeyboardEngineError.shouldBeFatal {
       MathKeyboardEngineError.triggerFatalError(errorMessage, #file, #line)
-    } else {
-      return errorMessage
     }
+    return errorMessage
   }
   open func getLatex(_ k: KeyboardMemory, _ latexConfiguration: LatexConfiguration) -> String {
     var latex = self.getLatexPart(k, latexConfiguration)
@@ -19,12 +18,10 @@ open class TreeNode : SyntaxTreeComponent {
         latex = concatLatex([latex, latexConfiguration.selectionHightlightEnd])
       }
       return latex
-    } else {
-      if (k.current === self) {
-        return concatLatex([latex, latexConfiguration.activePlaceholderLatex])
-      } else {
-        return latex
-      }
     }
+    if k.current === self {
+      return concatLatex([latex, latexConfiguration.activePlaceholderLatex])
+    }
+    return latex
   }
 }

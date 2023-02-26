@@ -45,9 +45,8 @@ open class MatrixNode : BranchingNode {
     guard let index = self.placeholders.indexOf(placeholder) else {
       if MathKeyboardEngineError.shouldBeFatal {
         MathKeyboardEngineError.triggerFatalError("The provided Placeholder is not part of this MatrixNode.", #file, #line)
-      } else{
-        return nil
       }
+      return nil
     }
     let rowIndex = index / self.width
     let columnIndex = index - rowIndex * self.width

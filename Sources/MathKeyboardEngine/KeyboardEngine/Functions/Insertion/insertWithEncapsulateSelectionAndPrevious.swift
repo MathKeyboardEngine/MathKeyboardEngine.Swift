@@ -3,9 +3,8 @@ public extension KeyboardMemory {
     if newNode.placeholders.count < 2 {
       if MathKeyboardEngineError.shouldBeFatal {
         MathKeyboardEngineError.triggerFatalError("Expected 2 placeholders.", #file, #line)
-      } else {
-        return
       }
+      return
     }
     let selection: ReferenceArray<TreeNode> = self.popSelection()
     let secondPlaceholder: Placeholder = newNode.placeholders[1]

@@ -50,18 +50,15 @@ public class ReferenceArray<T : AnyObject> {
     func firstAfterOrNil(_ element: T) -> T? {
         if let i = self.indexOf(element), i < self.count - 1 {
             return self[i + 1]
-        } else {
-            return nil
         }
+        return nil
     }
 
     func firstBeforeOrNil(_ element: T) -> T? {
-        
         if let i = self.indexOf(element), i > 0 {
             return self[i - 1]
-        } else {
-            return nil
         }
+        return nil
     }
 
     func removeRange(start: Int, exclusiveEnd: Int) -> ReferenceArray<T> {
@@ -71,10 +68,6 @@ public class ReferenceArray<T : AnyObject> {
     }
 
     func contains(where predicate: (Array<T>.Element) throws -> Bool) rethrows -> Bool {
-        try self.asValueTypeArray.contains(where : predicate)
-    }
-
-    func filter(where predicate: (Array<T>.Element) throws -> Bool) rethrows -> Bool {
         try self.asValueTypeArray.contains(where : predicate)
     }
 

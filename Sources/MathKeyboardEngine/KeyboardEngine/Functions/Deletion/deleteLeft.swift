@@ -2,7 +2,7 @@ public extension KeyboardMemory {
   func deleteLeft() -> Void {
     if let current: Placeholder = self.current as? Placeholder {
       guard current.nodes.isEmpty, let currentParentNode : BranchingNode = current.parentNode else {
-      return
+        return
       }
       if let nonEmptyPlaceholderOnLeft = currentParentNode.placeholders.getFirstNonEmptyOnLeftOf(current) {
         if currentParentNode.placeholders.count == 2 && current === currentParentNode.placeholders[1] && current.nodes.count == 0 {

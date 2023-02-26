@@ -15,8 +15,7 @@ open class Placeholder : SyntaxTreeComponent {
             }
         } else if nodes.isEmpty {
             return latexConfiguration.passivePlaceholderLatex
-        } else {
-            return concatLatex(nodes.asValueTypeArray.map({ $0.getLatex(k, latexConfiguration) }))
         }
+        return concatLatex(nodes.asValueTypeArray.map({ $0.getLatex(k, latexConfiguration) }))
     }
 }

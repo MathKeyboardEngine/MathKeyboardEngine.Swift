@@ -18,9 +18,8 @@ internal extension KeyboardMemory {
         if indexOfNewInclusiveSelectionLeftBorder < 0 {
           if MathKeyboardEngineError.shouldBeFatal {
             MathKeyboardEngineError.triggerFatalError("The TreeNode at index 0 of the current Placeholder is as far as you can go left if current is a TreeNode.", #file, #line)
-          } else {
-            return
           }
+          return
         }
         self.inclusiveSelectionLeftBorder = nodes[indexOfNewInclusiveSelectionLeftBorder]
         self.inclusiveSelectionRightBorder = (self.current as! TreeNode)
