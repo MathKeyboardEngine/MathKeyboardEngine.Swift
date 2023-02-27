@@ -17,8 +17,8 @@ extension XCTestCase {
         Thread(block: testcase).start()
 
         waitForExpectations(timeout: 0.1) { _ in
-            XCTAssertEqual(expectedMessage, assertionMessage)
             MathKeyboardEngineError.triggerFatalError = Swift.fatalError
+            XCTAssertEqual(expectedMessage, assertionMessage)
         }
     }
 }
