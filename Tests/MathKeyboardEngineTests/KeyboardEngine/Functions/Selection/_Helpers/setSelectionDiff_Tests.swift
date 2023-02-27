@@ -17,7 +17,7 @@ class SetSelectionDiff_Tests : XCTestCase
             // Act & assert
             let act = { k.setSelectionDiff(currentSelectionDiff - 1) } // Trying to go even more to the left.
             if shouldBeFatal {
-                expectFatalError("The TreeNode at index 0 of the current Placeholder is as far as you can go left if current is a TreeNode.", act)
+                XCTAssertTrue(fatalErrorTriggered("The TreeNode at index 0 of the current Placeholder is as far as you can go left if current is a TreeNode.", act))
             } else {
                 act()
                 XCTAssertEqual(currentSelectionDiff, k.selectionDiff!) // did nothing

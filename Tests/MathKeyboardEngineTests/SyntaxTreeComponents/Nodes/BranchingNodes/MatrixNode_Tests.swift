@@ -179,7 +179,7 @@
             let placeholderThatIsNotPartOfTheMatrix = Placeholder()
             let act = { return matrix.getMoveDownSuggestion(placeholderThatIsNotPartOfTheMatrix) } 
             if shouldBeFatal {
-                expectFatalError("The provided Placeholder is not part of this MatrixNode.", { _ = act() })
+                XCTAssertTrue(fatalErrorTriggered("The provided Placeholder is not part of this MatrixNode.", { _ = act() }))
             } else {
                 XCTAssertNil(act())
             }

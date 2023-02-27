@@ -91,7 +91,7 @@
             let k = KeyboardMemory()
             let act =  { k.insertWithEncapsulateSelectionAndPrevious(StandardBranchingNode("[", "]")) }
             if shouldBeFatal {
-                expectFatalError("Expected 2 placeholders.", act);
+                XCTAssertTrue(fatalErrorTriggered("Expected 2 placeholders.", act))
             } else {
                 act()
                 Expect.latex("▦", k)

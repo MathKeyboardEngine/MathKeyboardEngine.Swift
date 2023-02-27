@@ -8,7 +8,7 @@ class PopSelection_Tests : XCTestCase
             let k = KeyboardMemory()
             let act = {  _ = k.popSelection() }
             if shouldBeFatal {
-                expectFatalError("Enter selection mode before calling this method.", act)
+                XCTAssertTrue(fatalErrorTriggered("Enter selection mode before calling this method.", act))
             } else {
                 act()
             }

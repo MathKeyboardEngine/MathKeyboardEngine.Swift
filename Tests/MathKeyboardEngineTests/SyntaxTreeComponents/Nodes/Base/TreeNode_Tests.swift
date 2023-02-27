@@ -9,7 +9,7 @@ class TreeNode_Tests : XCTestCase {
         for shouldBeFatal in [true, false] {
             MathKeyboardEngineError.shouldBeFatal = shouldBeFatal
             if shouldBeFatal {
-                expectFatalError(expectedMessage, { _ = act()})
+                XCTAssertTrue(fatalErrorTriggered(expectedMessage, { _ = act()}))
             } else {
                 XCTAssertEqual(expectedMessage, act())
             }
