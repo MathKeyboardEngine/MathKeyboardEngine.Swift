@@ -1,4 +1,4 @@
-﻿class FractionNode_Tests : XCTestCase
+class FractionNode_Tests : XCTestCase
 {
 
     func test__Frac_left_right_right_right()

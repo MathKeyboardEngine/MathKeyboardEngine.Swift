@@ -1,4 +1,4 @@
-﻿public class InsertWithEncapsulateCurrent_Tests : XCTestCase
+public class InsertWithEncapsulateCurrent_Tests : XCTestCase
 {
 
     func test__Does_a_regular_insert_if_Current_is_a_Placeholder()

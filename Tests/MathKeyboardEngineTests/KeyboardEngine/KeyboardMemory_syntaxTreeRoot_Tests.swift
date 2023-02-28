@@ -1,4 +1,4 @@
-﻿class KeyboardMemory_SyntaxTreeRoot_Tests : XCTestCase
+class KeyboardMemory_SyntaxTreeRoot_Tests : XCTestCase
 {
 
     func test__SyntaxTreeRoot_is_equal_to_Current_on_KeyboardMemory_initialization()

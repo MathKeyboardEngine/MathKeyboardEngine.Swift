@@ -35,7 +35,6 @@ public extension KeyboardMemory {
           }
         }
       }
-      
     } else {
       if let current = self.current as? BranchingNode, current.placeholders[0].nodes.count > 0 && current.placeholders.asValueTypeArray[1..<current.placeholders.count].allSatisfy({ $0.nodes.isEmpty }) {
         let nonEmptyPlaceholder = current.placeholders[0]

@@ -1,4 +1,4 @@
-﻿class NthRoot_Tests : XCTestCase
+class NthRoot_Tests : XCTestCase
 {
 
     func test__Basic_test()

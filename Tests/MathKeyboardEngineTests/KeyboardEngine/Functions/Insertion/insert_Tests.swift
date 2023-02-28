@@ -1,4 +1,4 @@
-﻿public class Insert_Tests : XCTestCase
+public class Insert_Tests : XCTestCase
 {
 
     func test__Insert_inserts_at_index_0_of_a_TreeNodeList_if_KeyboardMemory_Current_is_a_Placeholder()

@@ -1,4 +1,4 @@
-﻿class LatexConfiguration_Tests : XCTestCase
+class LatexConfiguration_Tests : XCTestCase
 {
     func test__Allow_customizing_the_shape_of_the_cursor_and_empty_Placeholders()
     {
@@ -6,11 +6,11 @@
         let k = KeyboardMemory()
         k.insert(AscendingBranchingNode("", "^{", "}"))
         let myLatexConfiguration = LatexConfiguration()
-        
+
         // Act
         myLatexConfiguration.activePlaceholderShape = "myCursor"
         myLatexConfiguration.passivePlaceholderShape = "myEmptyPlace"
-        
+
         // Assert
         XCTAssertEqual("myCursor^{myEmptyPlace}", k.getEditModeLatex(myLatexConfiguration))
     }
@@ -27,7 +27,7 @@
         myLatexConfiguration.passivePlaceholderShape = #"\blacksquare"#
         myLatexConfiguration.activePlaceholderColor = "orange"
         myLatexConfiguration.passivePlaceholderColor = "gray"
-        
+
         // Assert
         XCTAssertEqual(#"{\color{orange}\blacksquare}^{{\color{gray}\blacksquare}}"#, k.getEditModeLatex(myLatexConfiguration))
     }

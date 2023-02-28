@@ -1,4 +1,4 @@
-﻿class MoveDown_Tests : XCTestCase
+class MoveDown_Tests : XCTestCase
 {
     func test__MoveDown_can_move_the_cursor_down_via_an_ancestor_if_the_current_BranchginNode_does_not_support_updown_navigation()
     {

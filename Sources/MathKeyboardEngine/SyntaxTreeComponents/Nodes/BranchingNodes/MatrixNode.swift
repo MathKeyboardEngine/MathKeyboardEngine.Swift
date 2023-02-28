@@ -41,7 +41,7 @@ open class MatrixNode : BranchingNode {
       return self.grid[rowIndex - 1][columnIndex]
   }
 
-  private func getPositionOf(_ placeholder: Placeholder) -> (Int,Int)? {    
+  private func getPositionOf(_ placeholder: Placeholder) -> (Int,Int)? {
     guard let index = self.placeholders.indexOf(placeholder) else {
       if MathKeyboardEngineError.shouldBeFatal {
         MathKeyboardEngineError.triggerFatalError("The provided Placeholder is not part of this MatrixNode.", #file, #line)

@@ -1,4 +1,4 @@
-﻿@testable import MathKeyboardEngine
+@testable import MathKeyboardEngine
 
 public class BranchingNode_Tests : XCTestCase {
     public func test__Calling_MoveUp_or_MoveDown_does_not_throw_even_if_not_implemented() {

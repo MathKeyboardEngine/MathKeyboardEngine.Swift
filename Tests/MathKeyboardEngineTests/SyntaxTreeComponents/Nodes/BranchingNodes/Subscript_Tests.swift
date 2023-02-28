@@ -1,4 +1,4 @@
-﻿class Subscript_Tests : XCTestCase
+class Subscript_Tests : XCTestCase
 {
 
     func test__Subscript_a_MoveRight_4()

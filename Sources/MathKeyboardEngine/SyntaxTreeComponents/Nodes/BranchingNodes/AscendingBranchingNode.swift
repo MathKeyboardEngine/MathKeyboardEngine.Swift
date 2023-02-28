@@ -1,5 +1,5 @@
 open class AscendingBranchingNode : StandardBranchingNode {
-  
+
   open override func getMoveDownSuggestion(_ fromPlaceholder: Placeholder) -> Placeholder? {
     guard let currentPlaceholderIndex = self.placeholders.indexOf(fromPlaceholder), currentPlaceholderIndex > 0 else {
       return nil

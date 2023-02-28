@@ -1,4 +1,4 @@
-﻿public class DeleteLeft_Tests : XCTestCase
+public class DeleteLeft_Tests : XCTestCase
 {
 
     func test__DeleteLeft_can_also_be_used_to_delete_empty_Placeholders_in_some_cases_UX__case_x()

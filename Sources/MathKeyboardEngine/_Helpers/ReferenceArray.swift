@@ -1,81 +1,81 @@
 public class ReferenceArray<T : AnyObject> {
-    public var asValueTypeArray = [T]()
-    
-    public init() { }
+  public var asValueTypeArray = [T]()
 
-    private init(_ arr : ArraySlice<T>) {
-        asValueTypeArray.append(contentsOf: arr)
-    }
-    public init(_ arr : T...) {
-        asValueTypeArray.append(contentsOf: arr)
-    }
+  public init() { }
 
-    public subscript (i: Int) -> T {
-        get { 
-            return asValueTypeArray[i]
-        }
-        set (newValue) {
-            asValueTypeArray[i] = newValue
-        }
-    }
+  private init(_ arr : ArraySlice<T>) {
+    asValueTypeArray.append(contentsOf: arr)
+  }
+  public init(_ arr : T...) {
+    asValueTypeArray.append(contentsOf: arr)
+  }
 
-    public func append(_ element : T) {
-        asValueTypeArray.append(element)
+  public subscript (i: Int) -> T {
+    get {
+      return asValueTypeArray[i]
     }
+    set (newValue) {
+      asValueTypeArray[i] = newValue
+    }
+  }
 
-    public func insert(_ element : T, at: Int) {
-        asValueTypeArray.insert(element, at: at)
-    }
+  public func append(_ element : T) {
+    asValueTypeArray.append(element)
+  }
 
-    public func remove(_ element : T) {
-        asValueTypeArray.removeAll{ $0 === element }
-    }
+  public func insert(_ element : T, at: Int) {
+    asValueTypeArray.insert(element, at: at)
+  }
 
-    public func indexOf(_ element : T) -> Int? {
-        return asValueTypeArray.firstIndex{ $0 === element }
-    }
+  public func remove(_ element : T) {
+    asValueTypeArray.removeAll{ $0 === element }
+  }
 
-    public var count : Int {
-        return asValueTypeArray.count
-    }
+  public func indexOf(_ element : T) -> Int? {
+    return asValueTypeArray.firstIndex{ $0 === element }
+  }
 
-    public var isEmpty : Bool {
-        return asValueTypeArray.isEmpty
-    }
+  public var count : Int {
+    return asValueTypeArray.count
+  }
 
-    public var last : T? {
-        return asValueTypeArray.last
-    }
+  public var isEmpty : Bool {
+    return asValueTypeArray.isEmpty
+  }
 
-    func firstAfterOrNil(_ element: T) -> T? {
-        if let i = self.indexOf(element), i < self.count - 1 {
-            return self[i + 1]
-        }
-        return nil
-    }
+  public var last : T? {
+    return asValueTypeArray.last
+  }
 
-    func firstBeforeOrNil(_ element: T) -> T? {
-        if let i = self.indexOf(element), i > 0 {
-            return self[i - 1]
-        }
-        return nil
+  func firstAfterOrNil(_ element: T) -> T? {
+    if let i = self.indexOf(element), i < self.count - 1 {
+      return self[i + 1]
     }
+    return nil
+  }
 
-    func removeRange(start: Int, exclusiveEnd: Int) -> ReferenceArray<T> {
-        let returnValue = ReferenceArray<T>(self.asValueTypeArray[start..<exclusiveEnd])
-        asValueTypeArray.removeSubrange(start ..< exclusiveEnd)
-        return returnValue
+  func firstBeforeOrNil(_ element: T) -> T? {
+    if let i = self.indexOf(element), i > 0 {
+      return self[i - 1]
     }
+    return nil
+  }
 
-    func contains(where predicate: (Array<T>.Element) throws -> Bool) rethrows -> Bool {
-        try self.asValueTypeArray.contains(where : predicate)
-    }
+  func removeRange(start: Int, exclusiveEnd: Int) -> ReferenceArray<T> {
+    let returnValue = ReferenceArray<T>(self.asValueTypeArray[start..<exclusiveEnd])
+    asValueTypeArray.removeSubrange(start ..< exclusiveEnd)
+    return returnValue
+  }
 
-    func replaceSubrange(_ subrange: ClosedRange<Int>, with newElements: ReferenceArray<T>) {
-        self.asValueTypeArray.replaceSubrange(subrange, with: newElements.asValueTypeArray)
-    }
+  func contains(where predicate: (Array<T>.Element) throws -> Bool) rethrows -> Bool {
+    try self.asValueTypeArray.contains(where : predicate)
+  }
 
-    func removeLast() {
-        _ = self.asValueTypeArray.removeLast()
-    }
+  func replaceSubrange(_ subrange: ClosedRange<Int>, with newElements: ReferenceArray<T>) {
+    self.asValueTypeArray.replaceSubrange(subrange, with: newElements.asValueTypeArray)
+  }
+
+  func removeLast() {
+    _ = self.asValueTypeArray.removeLast()
+  }
 }

@@ -1,5 +1,5 @@
 class TreeNode_Tests : XCTestCase {
-    
+
     func test__getLatexPartShouldBeOverridden() {
         let k = KeyboardMemory()
         let config = LatexConfiguration()

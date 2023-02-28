@@ -1,7 +1,7 @@
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/MathKeyboardEngine/MathKeyboardEngine.Swift?include_prereleases&style=flat-square)
 ![Swift Version](https://img.shields.io/badge/Swift-5.7-black.svg)
 ![Platforms](https://img.shields.io/badge/Platform-Linux|macOS|Windows-black.svg)
-![](https://badgen.net/badge/test%20coverage/99%25/green)
+![](https://badgen.net/badge/test%20coverage/100%25/green)
 
 ## MathKeyboardEngine for Swift
 
@@ -47,7 +47,7 @@ Live (JavaScript) examples can be tested at [mathkeyboardengine.github.io](https
 
 ## How to use this library
 
-To use the `MathKeyboardEngine` library in a [SwiftPM project](https://www.swift.org/package-manager), 
+To use the `MathKeyboardEngine` library in a [SwiftPM project](https://www.swift.org/package-manager),
 add it to the dependencies for your package and - for example - your command-line executable target:
 
 ```swift
@@ -58,13 +58,13 @@ import PackageDescription
 let package = Package(
     name: "MyExecutable",
     dependencies: [
-        .package(url: "https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift", from: "0.1.0-alpha.3"),
+        .package(url: "https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift", from: "0.1.0-alpha.4"),
     ],
     targets: [
         .executableTarget(
             name: "MyExecutable",
-            dependencies: [                
-                .product(name: "MathKeyboardEngine", package: "MathKeyboardEngine.Swift"), 
+            dependencies: [
+                .product(name: "MathKeyboardEngine", package: "MathKeyboardEngine.Swift"),
             ]),
         // ...
     ]
@@ -74,11 +74,16 @@ Then add
 ```swift
 import MathKeyboardEngine
 ```
-and 
+and
 ```swift
 let k = KeyboardMemory()
 let latexConfiguration = LatexConfiguration()
 // Subscribe to onclick events of virtual key presses, etc.
+```
+
+Note: the use of `Swift.fatalError` can be very helpful - especially during development and maybe even in production - for fixing [wrong implementation](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/search?q=MathKeyboardEngineError) of this libary. However, if you want MathKeyboardEngine not to use `Swift.fatalError`, then use the following line at startup of your app:
+```swift
+MathKeyboardEngineError.shouldBeFatal = false
 ```
 
 ## Documentation
@@ -95,7 +100,8 @@ Follow these steps to set up (and verify) a development environment for this rep
 1. Install [Git](https://git-scm.com/downloads), [Swift for Windows](https://www.swift.org/download/), [Visual Studio Community Edition with the C++ Desktop Workload](https://visualstudio.microsoft.com/vs/community/), [VS Code](https://code.visualstudio.com/download) and [Swift for VS Code](https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang).
 1. Fork (or clone), checkout and then open the root folder of this repository in VS Code.
 1. In the terminal, run `swift test`.
-1. Checking code coverage and testing for macOS and Linux is done via [GitHub Actions](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/actions) - see [.github/workflows](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/blob/main/.github/workflows/swift.yml).
+
+Note: checking code coverage and testing for macOS and Linux is done via [GitHub Actions](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/actions) - see [.github/workflows](https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift/blob/main/.github/workflows/swift.yml).
 
 
 ## License

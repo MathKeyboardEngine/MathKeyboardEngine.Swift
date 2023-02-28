@@ -1,4 +1,4 @@
-﻿@testable import MathKeyboardEngine
+@testable import MathKeyboardEngine
 
 class PopSelection_Tests : XCTestCase
 {

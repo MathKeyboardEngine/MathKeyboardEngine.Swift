@@ -1,4 +1,4 @@
-﻿class DeleteRight_Tests : XCTestCase
+class DeleteRight_Tests : XCTestCase
 {
 
     func test__DeleteRight_can_delete_an_empty_single_Placeholder_BranchingNode_from_its_Placeholder()

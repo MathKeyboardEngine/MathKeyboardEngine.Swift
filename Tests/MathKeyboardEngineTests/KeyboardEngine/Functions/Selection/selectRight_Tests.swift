@@ -1,4 +1,4 @@
-﻿class SelectRight_Tests : XCTestCase
+class SelectRight_Tests : XCTestCase
 {
 
     func test__Can_select_a_single_TreeNode_and_the_selection_is_correctly_displayed__case__the_exclusive_left_border_is_a_TreeNode()

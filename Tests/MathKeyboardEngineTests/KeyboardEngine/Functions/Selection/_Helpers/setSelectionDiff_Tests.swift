@@ -1,4 +1,4 @@
-﻿@testable import MathKeyboardEngine
+@testable import MathKeyboardEngine
 
 class SetSelectionDiff_Tests : XCTestCase
 {

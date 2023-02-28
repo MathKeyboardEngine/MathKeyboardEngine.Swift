@@ -1,4 +1,4 @@
-﻿class RoundBracketsNode_Tests : XCTestCase
+class RoundBracketsNode_Tests : XCTestCase
 {
     func test__Default_bracket_style()
     {

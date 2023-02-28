@@ -1,4 +1,4 @@
-﻿class StandardLeafNode_Tests : XCTestCase
+class StandardLeafNode_Tests : XCTestCase
 {
 
     func test__The_StandardLeafNode_allows_customizing_the_multiplication_operator_sign_even_if_it_is_already_in_the_KeyboardMemorys_syntax_tree()

@@ -1,4 +1,4 @@
-﻿class DeleteSelection_Tests : XCTestCase
+class DeleteSelection_Tests : XCTestCase
 {
 
     func test__Can_delete_a_single_TreeNode__case_The_exclusive_left_border_is_a_TreeNode()

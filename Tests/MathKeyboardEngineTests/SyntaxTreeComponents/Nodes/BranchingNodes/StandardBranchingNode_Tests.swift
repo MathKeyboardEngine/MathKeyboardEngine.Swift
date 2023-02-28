@@ -1,4 +1,4 @@
-﻿class StandardBranchingNode_Tests : XCTestCase
+class StandardBranchingNode_Tests : XCTestCase
 {
 
     func test__Sqrt_3_right_left_left_left_right()

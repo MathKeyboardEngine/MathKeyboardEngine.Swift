@@ -1,4 +1,4 @@
-﻿class Power_Tests : XCTestCase
+class Power_Tests : XCTestCase
 {
 
     func test__Power_3_MoveRight_4()

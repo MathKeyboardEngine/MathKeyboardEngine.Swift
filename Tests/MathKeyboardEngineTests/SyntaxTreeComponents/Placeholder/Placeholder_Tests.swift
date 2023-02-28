@@ -1,4 +1,4 @@
-﻿class Placeholder_Tests : XCTestCase
+class Placeholder_Tests : XCTestCase
 {
     func test__The_minimum_amount_of_required_space_is_added_by_Placeholder_GetLatex()
     {

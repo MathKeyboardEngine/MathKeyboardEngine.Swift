@@ -1,4 +1,4 @@
-﻿class GetLatex_Tests : XCTestCase {
+class GetLatex_Tests : XCTestCase {
     let Config : LatexConfiguration = {
         let config = LatexConfiguration()
         config.activePlaceholderShape = "▦"

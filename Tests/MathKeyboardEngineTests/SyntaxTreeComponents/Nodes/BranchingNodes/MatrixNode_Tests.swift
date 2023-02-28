@@ -1,4 +1,4 @@
-﻿public class MatrixNode_Tests : XCTestCase
+public class MatrixNode_Tests : XCTestCase
 {
 
     func test__PMatrix_width2_height3()
@@ -177,7 +177,7 @@
             MathKeyboardEngineError.shouldBeFatal = shouldBeFatal
             let matrix = MatrixNode(matrixType: "pmatrix", width: 2, height: 2)
             let placeholderThatIsNotPartOfTheMatrix = Placeholder()
-            let act = { return matrix.getMoveDownSuggestion(placeholderThatIsNotPartOfTheMatrix) } 
+            let act = { return matrix.getMoveDownSuggestion(placeholderThatIsNotPartOfTheMatrix) }
             if shouldBeFatal {
                 XCTAssertTrue(fatalErrorTriggered("The provided Placeholder is not part of this MatrixNode.", { _ = act() }))
             } else {

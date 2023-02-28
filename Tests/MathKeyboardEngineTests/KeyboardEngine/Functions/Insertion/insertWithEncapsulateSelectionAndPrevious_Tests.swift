@@ -1,4 +1,4 @@
-﻿class InsertWithEncapsulateSelectionAndPrevious_Tests : XCTestCase
+class InsertWithEncapsulateSelectionAndPrevious_Tests : XCTestCase
 {
 
     func test__When_a_single_TreeNode_is_selected_and_the_exclusive_left_border_is_a_TreeNode()

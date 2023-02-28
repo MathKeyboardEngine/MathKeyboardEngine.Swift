@@ -1,5 +1,5 @@
 open class LatexConfiguration {
-  public var activePlaceholderShape : String = #"\blacksquare"# 
+  public var activePlaceholderShape : String = #"\blacksquare"#
   public var activePlaceholderColor: String?
   public var passivePlaceholderShape: String = #"\square"#
   public var passivePlaceholderColor: String?

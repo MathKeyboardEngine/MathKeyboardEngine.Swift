@@ -1,4 +1,4 @@
-﻿public class Expect {
+public class Expect {
     public static func latex(_ latex : String, _ k : KeyboardMemory) -> Void {
         let config = LatexConfiguration()
         config.activePlaceholderShape = "▦"

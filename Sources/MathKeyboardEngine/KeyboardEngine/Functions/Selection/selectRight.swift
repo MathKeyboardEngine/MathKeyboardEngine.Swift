@@ -6,7 +6,7 @@ public extension KeyboardMemory {
       (self.current is TreeNode && (self.current as! TreeNode).parentPlaceholder.nodes.indexOf(self.current as! TreeNode)! + oldDiffWithCurrent < (self.current as! TreeNode).parentPlaceholder.nodes.count - 1)
     {
       self.setSelectionDiff(oldDiffWithCurrent + 1)
-    } else if 
+    } else if
       let rightBorder = self.inclusiveSelectionRightBorder,
       rightBorder.parentPlaceholder.nodes.last! === rightBorder,
       let ancestorNode = rightBorder.parentPlaceholder.parentNode
