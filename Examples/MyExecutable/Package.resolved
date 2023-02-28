@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MathKeyboardEngine/MathKeyboardEngine.Swift",
       "state" : {
-        "revision" : "a0112efaeaf1653fb258b429d3588bd2e42b4061",
-        "version" : "0.1.0-alpha.4"
+        "revision" : "3d3919d9b1d5c21ccf70d70739e037bb0bf1d866",
+        "version" : "0.1.0"
       }
     }
   ],

@@ -2,8 +2,8 @@
 
 A minimal example can be found in "Examples/MyExecutable".
 
-- It proofs that MathKeyboardEngine can be imported in another package.
 - It shows the dependency configuration in the "Examples/MyExecutable/Package.swift" file.
+- It proofs that MathKeyboardEngine can be imported/used (in "MyExecutable.swift").
 
 Open the root-folder of the repository in VS Code. Then use:
 ```
