@@ -2,6 +2,6 @@ update CHANGELOG.md
 swift test
 increment version in readme example
 git add *
-git commit -m "0.1.0-alpha.4"
-git tag 0.1.0-alpha.4
+git commit -m "0.1.0"
+git tag 0.1.0
 git push --tags
