@@ -1,6 +1,6 @@
 ![GitHub tag (latest SemVer pre-release)](https://img.shields.io/github/v/tag/MathKeyboardEngine/MathKeyboardEngine.Swift?include_prereleases&style=flat-square)
 ![Swift Version](https://img.shields.io/badge/Swift-5.7-black.svg)
-![Platforms](https://img.shields.io/badge/Platform-Linux|macOS|Windows-black.svg)
+![Platforms](https://img.shields.io/badge/Platform-Linux|macOS|iOS|Windows-black.svg)
 ![](https://badgen.net/badge/test%20coverage/100%25/green)
 
 ## MathKeyboardEngine for Swift
