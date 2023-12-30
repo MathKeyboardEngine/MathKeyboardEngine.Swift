@@ -3,6 +3,6 @@
     "files.encoding": "utf8",
     "files.trimTrailingWhitespace": true,
     "editor.codeActionsOnSave": {
-    "source.fixAll": true
+        "source.fixAll": "explicit"
     }
 }

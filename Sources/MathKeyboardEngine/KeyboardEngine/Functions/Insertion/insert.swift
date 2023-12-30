@@ -1,5 +1,17 @@
 public extension KeyboardMemory {
-  func insert(_ newNode: TreeNode) -> Void {
+  func insert(_ nodes : Array<TreeNode>) {
+    for node in nodes {
+      self.insertCore(node)
+      self.current = node
+    }
+  }
+
+  func insert(_ newNode : TreeNode) {
+    self.insertCore(newNode)
+    self.moveRight()
+  }
+
+  func insertCore(_ newNode: TreeNode) -> Void {
     if let current = self.current as? Placeholder  {
       current.nodes.insert(newNode, at: 0)
       newNode.parentPlaceholder = current
@@ -10,7 +22,6 @@ public extension KeyboardMemory {
       parent.nodes.insert(newNode, at: indexOfCurrent + 1)
       newNode.parentPlaceholder = parent
     }
-    self.moveRight()
   }
 }
 
