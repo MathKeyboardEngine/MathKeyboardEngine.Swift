@@ -1,7 +1,7 @@
 ﻿open class LatexParserConfiguration {
   public init() { }
-  public var additionalDigits : Array<String>? = nil
-  public var decimalSeparatorMatchers : Array<String> = [".", "{,}"]
-  public var preferredDecimalSeparator : (() -> String)? = nil
-  public var preferRoundBracketsNode : Bool = true
+  open var additionalDigits : Array<String>? = nil
+  open var decimalSeparatorMatchers : Array<String> = [".", "{,}"]
+  open var preferredDecimalSeparator : (() -> String)? = nil
+  open var preferRoundBracketsNode : Bool = true
 }

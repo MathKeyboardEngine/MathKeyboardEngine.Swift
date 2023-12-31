@@ -2,13 +2,13 @@
     if latex == nil {
         return KeyboardMemory()
     }
-    var x = latex!
+    var x = latex!.trimmingCharacters(in: .whitespacesAndNewlines)
 
     let k = KeyboardMemory()
 
     while x != "" {
         if x[0] == " " {
-            x = x[1...]
+            x = x.trimmingCharacters(in: .whitespacesAndNewlines)
             continue;
         }
 
@@ -19,31 +19,40 @@
             continue;
         }
 
-        if x[0].isNumber || latexParserConfiguration.additionalDigits?.contains(where: { $0 == String(x.first!) }) == true {
-            k.insert(DigitNode(String(x.first!)))
+        if x[0].isNumber || latexParserConfiguration.additionalDigits?.contains(where: { $0 == String(x[0]) }) == true {
+            k.insert(DigitNode(String(x[0])))
             x = x[1...]
             continue
         }
 
         var handled = false
 
+        print("check begin")
         if x.starts(with: #"\begin{"#) {
-            let matrixTypeAndRest = try x.getBracketPairContent(#"\begin{"#, #"}"#)
+            let matrixTypeAndRest = try x.getBracketPairContent(#"\begin{"#, "}")
             if !matrixTypeAndRest.content.hasSuffix("matrix") && !matrixTypeAndRest.content.hasSuffix("cases") {
                 throw MathKeyboardEngineError(#"Expected a word ending with "matrix" or "cases" after "\begin{"."#)
             }
-            let matrixContent = matrixTypeAndRest.rest[...matrixTypeAndRest.rest.index(of: "\\end{\(matrixTypeAndRest.content)}")!]
-            let lines = matrixContent.split(separator: #"\\"#)
-            k.insert(MatrixNode(matrixType: matrixTypeAndRest.content, width: lines[0].split(separator: "&").count, height: lines.count))
+            let intIndexOfMatrixEndInRest = matrixTypeAndRest.rest.distance(from: matrixTypeAndRest.rest.startIndex, to:matrixTypeAndRest.rest.index(of: "\\end{\(matrixTypeAndRest.content)}")!)
+            let matrixContent = matrixTypeAndRest.rest[...(intIndexOfMatrixEndInRest - 1)]
+            print("matrixContent: " + matrixContent)
+            let lines = matrixContent.split(separator: #"\\"#, omittingEmptySubsequences: false)
+            k.insert(MatrixNode(matrixType: matrixTypeAndRest.content, width: lines[0].split(separator: "&", omittingEmptySubsequences: false).count, height: lines.count))
+            var cel = 0;
             for line in lines {
-                for elementLatex in line.split(separator: "&") {
+                print("line: " + line)
+                for elementLatex in line.split(separator: "&", omittingEmptySubsequences: false) {
+                    cel += 1
+                    print("elementLatex: " + elementLatex)
                     let nodes = (try parseLatex(String(elementLatex), latexParserConfiguration)).syntaxTreeRoot.nodes
                     k.insert(nodes.asValueTypeArray)
                     k.moveRight()
                 }
             }
-            let matrixEnd = "\\end{\(matrixTypeAndRest.content)}";
-            x = x[(x.index(of: matrixEnd)!.hashValue + matrixEnd.count)...]
+
+            let matrixEnd = "\\end{\(matrixTypeAndRest.content)}"
+            let intIndexOfMatrixEndInX = x.distance(from: x.startIndex, to: x.index(of: matrixEnd)!)
+            x = x[(intIndexOfMatrixEndInX + matrixEnd.count)...]
             continue
         }
 
@@ -135,15 +144,17 @@
 
         if x.starts(with: "_{") {
             let opening = "_{";
-            let closingBracket1 = "}";
-            let bracketPair1ContentAndRest = try x.getBracketPairContent(opening, closingBracket1)
+            let bracketPair1ContentAndRest = try x.getBracketPairContent(opening, "}")
             if (bracketPair1ContentAndRest.rest.starts(with: "^{")) {
+                print("hit")
                 let ascendingBranchingNode = AscendingBranchingNode(opening, "}^{", "}")
                 k.insert(ascendingBranchingNode)
                 let placeholder1Nodes = try parseLatex(bracketPair1ContentAndRest.content, latexParserConfiguration).syntaxTreeRoot.nodes
                 k.insert(placeholder1Nodes.asValueTypeArray)
                 k.moveRight()
+                print("hit 2")
                 let bracketPair2ContentAndRest = try bracketPair1ContentAndRest.rest.getBracketPairContent("^{", "}")
+                print("bracketPair2ContentAndRest.content: " + bracketPair2ContentAndRest.content)
                 let placeholder2Nodes = try parseLatex(bracketPair2ContentAndRest.content, latexParserConfiguration).syntaxTreeRoot.nodes
                 k.insert(placeholder2Nodes.asValueTypeArray)
                 k.current = ascendingBranchingNode
