@@ -24,4 +24,12 @@ internal extension String {
   func index(of string: String) -> Index? {
     range(of: string)?.lowerBound
   }
+
+  func byteIndex(of string: String) -> Int? {
+    let index = self.index(of: string)
+    if index == nil {
+      return nil
+    }
+    return self.distance(from: self.startIndex, to: index!)
+  }
 }
