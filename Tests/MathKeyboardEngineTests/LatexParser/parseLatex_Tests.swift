@@ -89,12 +89,11 @@
 
     func test__Throws_on_missing_closing_bracket() throws
     {
-        do {
-            _ = try parseLatex(#"\frac{1}{2"#)
-        } catch is MathKeyboardEngineError {
-            return
+        XCTAssertThrowsError(_ = try parseLatex(#"\frac{1}{2"#)) {
+            (error) in XCTAssertEqual(
+                "A closing } is missing.",
+                (error as? MathKeyboardEngineError)?.message)
         }
-        XCTAssertTrue(false)
     }
 
     func test__Expected_StandardLeafNodes() throws
@@ -373,16 +372,13 @@
         Expect.viewModeLatex(latex, k)
     }
 
-    func test__It_throws_if_begin_does_not_contain_the_word_matrix_or_cases() throws
+    func test__It_throws_if_begin_does_not_contain_the_word_matrix_or_cases()
     {
-        do {
-            _ = try parseLatex(#"\begin{test}12\\34\end{test}"#)
+        XCTAssertThrowsError(_ = try parseLatex(#"\begin{test}12\\34\end{test}"#)) {
+            (error) in XCTAssertEqual(
+                #"Expected a word ending with "matrix" or "cases" after "\begin{"."#,
+                (error as? MathKeyboardEngineError)?.message)
         }
-        catch let error as MathKeyboardEngineError {
-            XCTAssertEqual(#"Expected a word ending with "matrix" or "cases" after "\begin{"."#, error.message)
-            return
-        }
-        XCTAssertTrue(false)
     }
 
     func test__LatexParserConfiguration_PreferRoundBracketsNode() throws

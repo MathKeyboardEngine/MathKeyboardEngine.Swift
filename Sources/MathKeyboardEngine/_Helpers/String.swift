@@ -19,7 +19,7 @@ internal extension String {
 
   subscript(range: PartialRangeFrom<Int>) -> String { String(self[index(startIndex, offsetBy: range.lowerBound)...]) }
   subscript(range: PartialRangeThrough<Int>) -> String { String(self[...index(startIndex, offsetBy: range.upperBound)]) }
-  subscript(range: PartialRangeUpTo<Int>) -> String { String(self[..<index(startIndex, offsetBy: range.upperBound)]) }
+  // subscript(range: PartialRangeUpTo<Int>) -> String { String(self[..<index(startIndex, offsetBy: range.upperBound)]) }
 
   func index(of string: String) -> Index? {
     range(of: string)?.lowerBound
