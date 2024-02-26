@@ -27,22 +27,18 @@
 
       var handled = false
 
-      print("check begin")
       if x.starts(with: #"\begin{"#) {
           let matrixTypeAndRest = try x.getBracketPairContent(#"\begin{"#, "}")
           if !matrixTypeAndRest.content.hasSuffix("matrix") && !matrixTypeAndRest.content.hasSuffix("cases") {
               throw MathKeyboardEngineError(#"Expected a word ending with "matrix" or "cases" after "\begin{"."#)
           }
           let matrixContent = matrixTypeAndRest.rest[...(matrixTypeAndRest.rest.byteIndex(of: "\\end{\(matrixTypeAndRest.content)}")! - 1)]
-          print("matrixContent: " + matrixContent)
           let lines = matrixContent.components(separatedBy: #"\\"#)
           k.insert(MatrixNode(matrixType: matrixTypeAndRest.content, width: lines[0].components(separatedBy:"&").count, height: lines.count))
           var cel = 0;
           for line in lines {
-              print("line: " + line)
               for elementLatex in line.components(separatedBy: "&") {
                   cel += 1
-                  print("elementLatex: " + elementLatex)
                   let nodes = (try parseLatex(elementLatex, latexParserConfiguration)).syntaxTreeRoot.nodes
                   k.insert(nodes.asValueTypeArray)
                   k.moveRight()
@@ -144,15 +140,12 @@
           let opening = "_{";
           let bracketPair1ContentAndRest = try x.getBracketPairContent(opening, "}")
           if (bracketPair1ContentAndRest.rest.starts(with: "^{")) {
-              print("hit")
               let ascendingBranchingNode = AscendingBranchingNode(opening, "}^{", "}")
               k.insert(ascendingBranchingNode)
               let placeholder1Nodes = try parseLatex(bracketPair1ContentAndRest.content, latexParserConfiguration).syntaxTreeRoot.nodes
               k.insert(placeholder1Nodes.asValueTypeArray)
               k.moveRight()
-              print("hit 2")
               let bracketPair2ContentAndRest = try bracketPair1ContentAndRest.rest.getBracketPairContent("^{", "}")
-              print("bracketPair2ContentAndRest.content: " + bracketPair2ContentAndRest.content)
               let placeholder2Nodes = try parseLatex(bracketPair2ContentAndRest.content, latexParserConfiguration).syntaxTreeRoot.nodes
               k.insert(placeholder2Nodes.asValueTypeArray)
               k.current = ascendingBranchingNode

@@ -441,4 +441,18 @@
         XCTAssertTrue(sumNode.placeholders[1].nodes[0] is StandardLeafNode)
         Expect.viewModeLatex(latex, k)
     }
+
+    func test__parsed_result_is_usable_for_existing_keyboardmemory() throws
+    {
+        // Arrange
+        let k = KeyboardMemory()
+        k.insert(DescendingBranchingNode(#"\frac{"#, "}{", "}"))
+        let parsedKeyboardMemory = try parseLatex("1+2x")
+
+        // Act
+        k.insert(parsedKeyboardMemory.syntaxTreeRoot.nodes)
+
+        // Assert
+        Expect.viewModeLatex(#"\frac{1+2x}{⬚}"#, k)
+    }
 }

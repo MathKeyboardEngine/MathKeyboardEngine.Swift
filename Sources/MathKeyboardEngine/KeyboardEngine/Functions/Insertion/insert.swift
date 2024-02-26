@@ -1,4 +1,11 @@
 public extension KeyboardMemory {
+func insert(_ nodes : ReferenceArray<TreeNode>) {
+    for node in nodes.asValueTypeArray {
+      self.insertCore(node)
+      self.current = node
+    }
+  }
+
   func insert(_ nodes : Array<TreeNode>) {
     for node in nodes {
       self.insertCore(node)
