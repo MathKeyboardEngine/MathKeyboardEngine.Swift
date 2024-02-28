@@ -64,4 +64,24 @@ public class Insert_Tests : XCTestCase
         // Assert
         XCTAssert(originalCurrent !== k.current)
     }
+
+    func test__Insert_empty_Array()
+    {
+        // Arrange
+        let k = KeyboardMemory()
+        // Act
+        k.insert(Array<TreeNode>())
+        // Assert
+        XCTAssertEqual(0, k.syntaxTreeRoot.nodes.count)
+    }
+
+    func test__Insert_empty_ReferenceArray()
+    {
+        // Arrange
+        let k = KeyboardMemory()
+        // Act
+        k.insert(ReferenceArray<TreeNode>())
+        // Assert
+        XCTAssertEqual(0, k.syntaxTreeRoot.nodes.count)
+    }
 }
