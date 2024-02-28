@@ -1,9 +1,6 @@
 public extension KeyboardMemory {
 func insert(_ nodes : ReferenceArray<TreeNode>) {
-    for node in nodes.asValueTypeArray {
-      self.insertCore(node)
-      self.current = node
-    }
+    insert(nodes.asValueTypeArray)
   }
 
   func insert(_ nodes : Array<TreeNode>) {

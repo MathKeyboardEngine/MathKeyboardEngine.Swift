@@ -1,6 +1,6 @@
 import MathKeyboardEngine // don't forget this import :)
 
-internal func printStuff() {
+internal func basicTest() {
     let k = KeyboardMemory()
     let latexConfiguration = LatexConfiguration()
 
