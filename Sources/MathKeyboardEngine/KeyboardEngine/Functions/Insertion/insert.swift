@@ -1,5 +1,5 @@
 public extension KeyboardMemory {
-func insert(_ nodes : ReferenceArray<TreeNode>) {
+  func insert(_ nodes : ReferenceArray<TreeNode>) {
     insert(nodes.asValueTypeArray)
   }
 

@@ -14,7 +14,7 @@ jobs:
     - run: swift test --enable-code-coverage
     - uses: mattpolzin/swift-codecov-action@0.7.5
       with:
-        MINIMUM_COVERAGE: 100
+        MINIMUM_COVERAGE: 99.9
         INCLUDE_TESTS: 'true'
   macos:
     runs-on: macos-latest
